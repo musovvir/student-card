@@ -15,7 +15,9 @@ const Card = () => {
           <p>Имя: {firstName}</p>
           <p>Фамилия: {lastName}</p>
           <p>Год рождения: {yearOfBirth}</p>
-          <p>Портфолио: {portfolio}</p>
+          <p>
+            Портфолио: <a href={portfolio}>{portfolio}</a>
+          </p>
           <button
             onClick={() => history.replace("/addCard")}
             className="btn btn-primary"
