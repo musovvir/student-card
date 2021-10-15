@@ -9,7 +9,7 @@ const Card = () => {
   const portfolio = localStorage.getItem("portfolio")
   return (
     <div className="container">
-      {firstName.length > 0 ? (
+      {firstName?.length > 0 ? (
         <>
           <h1>Карточка студента</h1>
           <p>Имя: {firstName}</p>
