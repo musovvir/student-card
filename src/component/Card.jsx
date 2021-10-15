@@ -1,24 +1,42 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { useEffect } from "react"
+import { useHistory } from "react-router-dom"
 
-const Card = ({ firstName, lastName, yearOfBirth, portfolio }) => {
+const Card = () => {
+  const history = useHistory()
+  const firstName = localStorage.getItem("firstName")
+  const lastName = localStorage.getItem("lastName")
+  const yearOfBirth = localStorage.getItem("yearOfBirth")
+  const portfolio = localStorage.getItem("portfolio")
   return (
     <div className="container">
-      <h1>Карточка студента</h1>
-      <p>Имя: </p>
-      <p>Фамилия: </p>
-      <p>Год рождения: </p>
-      <p>Портфолио: </p>
-      <button className="btn btn-primary">Редактировать</button>
+      {firstName.length > 0 ? (
+        <>
+          <h1>Карточка студента</h1>
+          <p>Имя: {firstName}</p>
+          <p>Фамилия: {lastName}</p>
+          <p>Год рождения: {yearOfBirth}</p>
+          <p>Портфолио: {portfolio}</p>
+          <button
+            onClick={() => history.replace("/addCard")}
+            className="btn btn-primary"
+          >
+            Редактировать
+          </button>
+        </>
+      ) : (
+        <>
+          <h1>Карточка студента</h1>
+          <p>Нет данных</p>
+          <button
+            className="btn btn-primary"
+            onClick={() => history.push("/addCard")}
+          >
+            Добавить
+          </button>
+        </>
+      )}
     </div>
   )
-}
-
-Card.propTypes = {
-  firstName: PropTypes.string,
-  lastName: PropTypes.string,
-  yearOfBirth: PropTypes.string,
-  portfolio: PropTypes.string
 }
 
 export default Card

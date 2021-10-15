@@ -7,26 +7,26 @@ export function validator(data, config) {
         statusValidate = data.trim() === ""
         break
 
-      case "isEmail": {
-        const emailRegExp = /^\S+@\S+\.\S+$/g
-        statusValidate = !emailRegExp.test(data)
-        break
-      }
-
-      case "isCapitalSymbol": {
-        const capitalRegExp = /[A-Z]+/g
-        statusValidate = !capitalRegExp.test(data)
-        break
-      }
-
-      case "isContainDigit": {
-        const digitRegExp = /\d+/g
+      case "isDigit": {
+        const digitRegExp = /^\d+$/g
         statusValidate = !digitRegExp.test(data)
+        break
+      }
+
+      case "isActual": {
+        statusValidate = data > new Date().getFullYear()
         break
       }
 
       case "min": {
         statusValidate = data.length < config.value
+        break
+      }
+
+      case "isURL": {
+        const urlRegExp =
+          /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g
+        statusValidate = !urlRegExp.test(data)
         break
       }
 

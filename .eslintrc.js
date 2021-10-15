@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ["plugin:react/recommended", "standard"],
+  extends: ["plugin:react/recommended"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -25,8 +25,7 @@ module.exports = {
       }
     ],
     "max-len": "off",
-    "multiline-ternary": ["error", "always-multiline"],
-    "operator-linebreak": ["error", "before"],
+    "multiline-ternary": ["error", "never"],
     "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
     "no-trailing-spaces": "off"
   }
